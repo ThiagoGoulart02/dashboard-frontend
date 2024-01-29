@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import styles from "./Login.module.css";
-import { Container } from "../../components/container/Container";
-import { Layout } from "../../components/layout/Layout";
-import { Input } from "../../components/input/Input";
 import { Button } from "../../components/button/Button";
+import { Container } from "../../components/container/Container";
+import { Input } from "../../components/input/Input";
+import { Layout } from "../../components/layout/Layout";
+import styles from "./Login.module.css";
 
 export const Login = () => {
   const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
   const [type, setType] = useState("password");
 
   const EMAIL_TEXT = "Enter with your email";
+  const PASSWORD_TEXT = "Enter with your password";
+  const FORGOTPASSWORD_TEXT = "Forgot your password?";
 
   const handleChangeIcon = () => {
     if (icon === "bx bx-show bx-tada-hover") {
@@ -33,7 +35,7 @@ export const Login = () => {
             <Input placeholder={EMAIL_TEXT} type={"email"} />
           </div>
           <div className={styles.passwordInput}>
-            <Input placeholder={"Enter with your password"} type={type} />
+            <Input placeholder={PASSWORD_TEXT} type={type} />
             <i className={icon} onClick={handleChangeIcon} />
           </div>
           <div className={styles.buttons}>
@@ -45,7 +47,7 @@ export const Login = () => {
             </div>
           </div>
           <div className={styles.forgotPassword}>
-            <p>Forgot your password?</p>
+            <p>{FORGOTPASSWORD_TEXT}</p>
           </div>
         </Layout>
       </div>
