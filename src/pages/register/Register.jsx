@@ -6,6 +6,11 @@ import { Layout } from "../../components/layout/Layout";
 import styles from "./Register.module.css";
 
 export const Register = () => {
+  const NAME_TEXT = "Enter with your name";
+  const EMAIL_TEXT = "Enter with your email";
+  const PASSWORD_TEXT = "Enter with your password";
+  const PASSWORD_2_TEXT = "Plase confirm your password";
+
   return (
     <Container type="center">
       <div className={styles.content}>
@@ -15,16 +20,16 @@ export const Register = () => {
             <h3>Sign up</h3>
           </div>
           <div className={styles.nameInput}>
-            <Input placeholder="Enter with your name" />
+            <Input placeholder={NAME_TEXT} />
           </div>
           <div className={styles.emailInput}>
-            <Input placeholder="Enter with your email" />
+            <Input placeholder={EMAIL_TEXT} />
           </div>
           <div className={styles.passwordInput}>
-            <Input placeholder="Enter with your password" />
+            <Input placeholder={PASSWORD_TEXT} />
           </div>
           <div className={styles.passwordConfirmationInput}>
-            <Input placeholder="Confirm your password" />
+            <Input placeholder={PASSWORD_2_TEXT} />
           </div>
           <div className={styles.buttons}>
             <div className={styles.backButton}>
