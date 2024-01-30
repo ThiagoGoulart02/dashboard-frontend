@@ -73,3 +73,30 @@
   background-color: var(--button);
   border-radius: 30px;
 }
+
+@media screen and (max-width: 830px) {
+  .content {
+    width: 70%;
+    height: 60%;
+  }
+
+  .title {
+    font-size: 95%;
+  }
+
+  .buttons {
+    gap: 20px;
+  }
+
+  .buttonSignIn {
+    width: 40%;
+  }
+
+  .buttonSignUp {
+    width: 40%;
+  }
+
+  .forgotPassword {
+    font-size: 100%;
+  }
+}
