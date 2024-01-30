@@ -65,9 +65,7 @@
   .buttons {
     gap: 20px;
   }
-  .buttonBack {
-    width: 40%;
-  }
+  .buttonBack,
   .buttonNext {
     width: 40%;
   }
