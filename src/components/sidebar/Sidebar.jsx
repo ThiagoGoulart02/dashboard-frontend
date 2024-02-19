@@ -6,12 +6,7 @@ const Sidebar = () => {
   return (
     <Layout type="flex-start">
       <div className={styles.container}>
-        <Layout type="space-evenly-column">
-          <div className={styles.title}>
-            <h1>Dash</h1>
-            <h1 className={styles.secondTitle}>board</h1>
-          </div>
-
+        <Layout type="space-between-column">
           <div className={styles.listItems}>
             <li className={styles.item}>
               <a href="/home">

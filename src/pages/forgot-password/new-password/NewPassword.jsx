@@ -24,7 +24,7 @@ export const NewPassword = () => {
   return (
     <Container type="center">
       <div className={styles.content}>
-        <Layout type="space-evenly-column">
+        <Layout type="space-between-column">
           <div className={styles.title}>
             <h1>Dashboard</h1>
             <h3>Forgot password</h3>
