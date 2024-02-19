@@ -62,11 +62,11 @@
   .title {
     font-size: 95%;
   }
-  
+
   .buttons {
     gap: 20px;
   }
-  
+
   .buttonBack,
   .buttonNext {
     width: 40%;
