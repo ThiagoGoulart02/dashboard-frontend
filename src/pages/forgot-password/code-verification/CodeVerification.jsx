@@ -5,13 +5,13 @@ import { Layout } from "../../../components/layout/Layout";
 import { Container } from "./../../../components/container/Container";
 import styles from "./CodeVerification.module.css";
 
-const CodeVerification = () => {
+export const CodeVerification = () => {
   const CODE_TEXT = "Paste the verification code here";
 
   return (
     <Container type="center">
       <div className={styles.content}>
-        <Layout type="space-evenly-column">
+        <Layout type="space-between-column">
           <div className={styles.title}>
             <h1>Dashboard</h1>
             <h3>Forgot password</h3>
@@ -32,5 +32,3 @@ const CodeVerification = () => {
     </Container>
   );
 };
-
-export default CodeVerification;

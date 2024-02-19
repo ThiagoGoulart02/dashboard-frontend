@@ -1,120 +1,105 @@
 @import "../../vars.css";
 
 .container {
-    width: 10%;
-    height: 100%;
-    background-color: var(--background-second);
+  width: 10%;
+  height: 100vh;
+  background-color: var(--background-second);
 }
 
 .title {
-    text-align: center;
-    color: var(--text);
-    font-size: 85%;
-    margin-top: 20%;
-    display: flex;
+  text-align: center;
+  color: var(--text);
+  font-size: 85%;
+  margin-top: 10%;
+  display: flex;
 }
 
-.secondTitle{
-    color: var(--second-text);
-}
-
-.photoContainer {
-    width: 100%;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.photo {
-    width: 45%;
-    height: 90%;
-    background-color: var(--background-second);
-    border-radius: 10px;
-    border: 2px solid var(--icon);
+.secondTitle {
+  color: var(--second-text);
 }
 
 /* list sidebar content */
 
 .listItems {
-    width: 100%;
-    height: 70%;
+  margin-top: 120%;
+  width: 100%;
+  height: 70%;
 }
 
 .item {
-    width: 100%;
-    height: 7%;
-    list-style: none;
+  width: 100%;
+  height: 7%;
+  list-style: none;
 }
 
 .item a {
-    width: 100%;
-    height: 100%;
-    color: var(--text);
-    font-family: var(--font-roboto);
-    font-size: 100%;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+  font-family: var(--font-roboto);
+  font-size: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .item i {
-    margin-left: 10%;
-    color: var(--icon);
+  margin-left: 10%;
+  color: var(--icon);
 }
 
 .navItem {
-    margin-left: 25%;
-    transition: .5s;
+  margin-left: 25%;
+  transition: 0.5s;
 }
 
-.item:hover{
-    background-color: var(--background);
-    letter-spacing: 0.09rem;
-    width: 109%;
-    border-radius: 30px;
-    margin-left: 2%;
+.item:hover {
+  background-color: var(--background);
+  letter-spacing: 0.09rem;
+  width: 109%;
+  border-radius: 30px;
+  margin-left: 2%;
 }
 
 @media screen and (max-width: 1450px) {
-    .title{
-        font-size: 65%;
-    }
+  .title {
+    font-size: 65%;
+  }
 
-    .item a {
-        font-size: 80%;
-    }
-    
-    .item i {
-        margin-left: 10%;
-    }
-    
-    .navItem {
-        margin-left: 20%;
-        transition: .5s;
-    }
+  .item a {
+    font-size: 80%;
+  }
+
+  .item i {
+    margin-left: 10%;
+  }
+
+  .navItem {
+    margin-left: 20%;
+    transition: 0.5s;
+  }
 }
 
 @media screen and (max-width: 1110px) {
-    .title {
-        font-size: 50%;
-    }
-    .item a {
-        font-size: 60%;
-    }
+  .title {
+    font-size: 50%;
+  }
+  .item a {
+    font-size: 60%;
+  }
 }
 
 @media screen and (max-width: 830px) {
-    .container {
-        width: 5%;
-    }
-    .title {
-        font-size: 0%;
-    }
-    .navItem {
-        font-size: 0%;
-    }
-    .item i {
-        margin-left: 30%;
-    }
+  .container {
+    width: 5%;
+  }
+  .title {
+    font-size: 0%;
+  }
+  .navItem {
+    font-size: 0%;
+  }
+  .item i {
+    margin-left: 30%;
+  }
 }
