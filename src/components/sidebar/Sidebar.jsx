@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   return (
-    <Layout type="flex-start">
+    <Layout>
       <div className={styles.container}>
         <Layout type="space-between-column">
           <div className={styles.listItems}>
