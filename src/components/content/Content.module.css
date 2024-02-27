@@ -1,0 +1,21 @@
+@import "../../vars.css";
+
+.container {
+  width: 90%;
+  height: 880px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: 98%;
+  height: 95%;
+  background-color: var(--background-second);
+  border-radius: 20px;
+}
+
+.content:hover {
+  border: 1px solid var(--hover-button);
+  transform: scale(1.01);
+}
