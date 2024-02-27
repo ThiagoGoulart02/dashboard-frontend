@@ -1,6 +1,6 @@
 import React from "react";
-import { Container } from "../../components/container/Container";
+import { Page } from "../../components/page/Page";
 
 export const Dashboard = () => {
-  return <Container></Container>;
+  return <Page></Page>;
 };
