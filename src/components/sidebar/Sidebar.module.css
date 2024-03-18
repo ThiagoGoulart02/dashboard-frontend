@@ -1,7 +1,7 @@
 @import "../../vars.css";
 
 .container {
-  width: 10%;
+  width: 200px;
   height: 100vh;
   background-color: var(--background-second);
 }
