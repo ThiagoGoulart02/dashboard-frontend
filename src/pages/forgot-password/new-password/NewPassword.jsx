@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../components/button/Button";
 import { Container } from "../../../components/container/Container";
 import { Input } from "../../../components/input/Input";
@@ -38,7 +39,9 @@ export const NewPassword = () => {
           </div>
           <div className={styles.buttons}>
             <div className={styles.buttonConfirm}>
-              <Button label={"Cancel"} />
+              <Link to={"/login"}>
+                <Button label={"Cancel"} />
+              </Link>
             </div>
             <div className={styles.buttonCancel}>
               <Button label={"Confirm"} />

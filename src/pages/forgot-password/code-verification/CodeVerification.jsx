@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../components/button/Button";
 import { Input } from "../../../components/input/Input";
 import { Layout } from "../../../components/layout/Layout";
@@ -21,7 +22,9 @@ export const CodeVerification = () => {
           </div>
           <div className={styles.buttons}>
             <div className={styles.buttonBack}>
-              <Button label={"Back"} />
+              <Link to={"/email-confirmation"}>
+                <Button label={"Back"} />
+              </Link>
             </div>
             <div className={styles.buttonNext}>
               <Button label={"Next"} />
