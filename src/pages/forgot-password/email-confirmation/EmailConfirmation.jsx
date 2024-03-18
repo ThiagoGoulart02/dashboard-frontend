@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../components/button/Button";
 import { Container } from "../../../components/container/Container";
 import { Input } from "../../../components/input/Input";
@@ -21,7 +22,9 @@ export const EmailConfirmation = () => {
           </div>
           <div className={styles.buttons}>
             <div className={styles.buttonBack}>
-              <Button label={"Back"} />
+              <Link to={"/login"}>
+                <Button label={"Back"} />
+              </Link>
             </div>
             <div className={styles.buttonNext}>
               <Button label={"Next"} />

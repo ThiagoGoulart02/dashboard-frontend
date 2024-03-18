@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
@@ -40,14 +41,18 @@ export const Login = () => {
           </div>
           <div className={styles.buttons}>
             <div className={styles.buttonSignIn}>
-              <Button label={"Sign up"} />
+              <Link to={"/register"}>
+                <Button label={"Sign up"} />
+              </Link>
             </div>
             <div className={styles.buttonSignUp}>
               <Button label={"Sign in"} />
             </div>
           </div>
           <div className={styles.forgotPassword}>
-            <p>{FORGOTPASSWORD_TEXT}</p>
+            <Link to={"/email-confirmation"}>
+              <p>{FORGOTPASSWORD_TEXT}</p>
+            </Link>
           </div>
         </Layout>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
@@ -33,7 +34,9 @@ export const Register = () => {
           </div>
           <div className={styles.buttons}>
             <div className={styles.backButton}>
-              <Button label="Back" />
+              <Link to={"/login"}>
+                <Button label="Back" />
+              </Link>
             </div>
             <div className={styles.signUpButton}>
               <Button label="Sign up" />
