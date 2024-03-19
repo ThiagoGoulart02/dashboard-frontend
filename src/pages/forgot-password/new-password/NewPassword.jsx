@@ -40,11 +40,11 @@ export const NewPassword = () => {
           <div className={styles.buttons}>
             <div className={styles.buttonConfirm}>
               <Link to={"/login"}>
-                <Button label={"Cancel"} />
+                <Button>Cancel</Button>
               </Link>
             </div>
             <div className={styles.buttonCancel}>
-              <Button label={"Confirm"} />
+              <Button>Confirm</Button>
             </div>
           </div>
         </Layout>
