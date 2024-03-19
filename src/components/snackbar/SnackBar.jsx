@@ -1,18 +1,25 @@
 import Alert from "@mui/material/Alert";
+import Slide from "@mui/material/Slide";
 import Snackbar from "@mui/material/Snackbar";
 import React from "react";
 
 export const SnackBar = ({ open, handleClose, text }) => {
+  const transition = Slide;
   return (
     <div>
-      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+      <Snackbar
+        open={open}
+        autoHideDuration={4000}
+        onClose={handleClose}
+        TransitionComponent={transition}
+      >
         <Alert
           onClose={handleClose}
-          severity="success"
+          severity="error"
           variant="filled"
           sx={{
             width: "400px",
-            height: "90px",
+            height: "70px",
             alignItems: "center",
           }}
         >
