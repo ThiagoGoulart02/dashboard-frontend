@@ -35,11 +35,11 @@ export const Register = () => {
           <div className={styles.buttons}>
             <div className={styles.backButton}>
               <Link to={"/login"}>
-                <Button label="Back" />
+                <Button>Back</Button>
               </Link>
             </div>
             <div className={styles.signUpButton}>
-              <Button label="Sign up" />
+              <Button>Sign up</Button>
             </div>
           </div>
         </Layout>

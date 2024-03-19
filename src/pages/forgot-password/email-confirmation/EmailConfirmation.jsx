@@ -23,11 +23,11 @@ export const EmailConfirmation = () => {
           <div className={styles.buttons}>
             <div className={styles.buttonBack}>
               <Link to={"/login"}>
-                <Button label={"Back"} />
+                <Button>Back</Button>
               </Link>
             </div>
             <div className={styles.buttonNext}>
-              <Button label={"Next"} />
+              <Button>Next</Button>
             </div>
           </div>
         </Layout>
