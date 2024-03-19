@@ -4,11 +4,13 @@ import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
 import { Layout } from "../../components/layout/Layout";
+import { SnackBar } from "../../components/snackbar/SnackBar";
 import styles from "./Login.module.css";
 
 export const Login = () => {
   const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
   const [type, setType] = useState("password");
+  const [openSnackbar, setOpenSnackbar] = useState(false); // New state for Snackbar
 
   const EMAIL_TEXT = "Enter with your email";
   const PASSWORD_TEXT = "Enter with your password";
@@ -22,6 +24,17 @@ export const Login = () => {
       setIcon("bx bx-show bx-tada-hover");
       setType("password");
     }
+  };
+
+  const handleSnackbarOpen = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleSnackbarClose = (reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
   return (
@@ -42,11 +55,11 @@ export const Login = () => {
           <div className={styles.buttons}>
             <div className={styles.buttonSignIn}>
               <Link to={"/register"}>
-                <Button label={"Sign up"} />
+                <Button>Sign up</Button>
               </Link>
             </div>
             <div className={styles.buttonSignUp}>
-              <Button label={"Sign in"} />
+              <Button onClick={handleSnackbarOpen}>Sign in</Button>
             </div>
           </div>
           <div className={styles.forgotPassword}>
@@ -56,6 +69,11 @@ export const Login = () => {
           </div>
         </Layout>
       </div>
+      <SnackBar
+        open={openSnackbar}
+        handleClose={handleSnackbarClose}
+        text={"The login its correct"}
+      />
     </Container>
   );
 };
