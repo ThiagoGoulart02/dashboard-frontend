@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { signIn } from "../../api/auth/signin/request";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
@@ -10,11 +11,17 @@ import styles from "./Login.module.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    let response = await signIn({ email, password });
+    console.log(response);
     handleSnackbarOpen();
   };
 
@@ -56,10 +63,18 @@ export const Login = () => {
             <h3>Sign in</h3>
           </div>
           <div className={styles.emailInput}>
-            <Input placeholder={EMAIL_TEXT} type={"email"} onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              placeholder={EMAIL_TEXT}
+              type={"email"}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className={styles.passwordInput}>
-            <Input placeholder={PASSWORD_TEXT} type={type} onChange={(e) => setPassword(e.target.value)}/>
+            <Input
+              placeholder={PASSWORD_TEXT}
+              type={type}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <i className={icon} onClick={handleChangeIcon} />
           </div>
           <div className={styles.buttons}>
