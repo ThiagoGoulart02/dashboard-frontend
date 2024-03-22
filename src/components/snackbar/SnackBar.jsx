@@ -3,7 +3,7 @@ import Slide from "@mui/material/Slide";
 import Snackbar from "@mui/material/Snackbar";
 import React from "react";
 
-export const SnackBar = ({ open, handleClose, text }) => {
+export const SnackBar = ({ open, handleClose, text, severity }) => {
   const transition = Slide;
   return (
     <div>
@@ -15,7 +15,7 @@ export const SnackBar = ({ open, handleClose, text }) => {
       >
         <Alert
           onClose={handleClose}
-          severity="error"
+          severity={severity}
           variant="filled"
           sx={{
             width: "400px",
