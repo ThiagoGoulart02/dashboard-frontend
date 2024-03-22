@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../../api/auth/signin/request";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
@@ -11,18 +11,25 @@ import styles from "./Login.module.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+
+  const navigate = useNavigate();
+
+  const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [severity, setSeverity] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
     let response = await signIn({ email, password });
-    console.log(response);
-    handleSnackbarOpen();
+    if (!response.error) {
+      setSnackBarMessage("Successful login");
+      setSeverity("success");
+      handleSnackbarOpen();
+      navigate("/");
+    } else {
+      setSnackBarMessage(response.errorText);
+      setSeverity("error");
+      handleSnackbarOpen();
+    }
   };
 
   const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
@@ -97,7 +104,8 @@ export const Login = () => {
       <SnackBar
         open={openSnackbar}
         handleClose={handleSnackbarClose}
-        text={"The login its correct"}
+        text={snackBarMessage}
+        severity={severity}
       />
     </Container>
   );

@@ -8,6 +8,8 @@ export const signIn = async(payload) => {
         });
         return {...response.data, error: false};
     } catch(error) {
-        return {error: true};
+        console.log(error.response.status);
+        console.log(error.response.data.message);
+        return {errorText: error.response.data.message, error: true};
     }
 }
