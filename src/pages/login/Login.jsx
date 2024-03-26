@@ -6,6 +6,8 @@ import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
 import { Layout } from "../../components/layout/Layout";
 import { useSnackbar } from "../../components/snackbar/SnackBarContext";
+import { validateEmail } from "../../validators/EmailValidator";
+import { validatePassword } from "../../validators/PasswordValidator";
 import styles from "./Login.module.css";
 
 export const Login = () => {
@@ -17,15 +19,23 @@ export const Login = () => {
   const { openSnackbar } = useSnackbar();
 
   const SUCCESSS_LOGIN_TEXT = "Login success";
+  const INVALID_EMAIL_TEXT = "Invalid email format!";
+  const INVALID_PASSWORD_TEXT = "Invalid password format!";
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let response = await signIn({ email, password });
-    if (!response.error) {
-      openSnackbar(SUCCESSS_LOGIN_TEXT, "success");
-      navigate("/");
+    if (!validateEmail(email)) {
+      openSnackbar(INVALID_EMAIL_TEXT, "error");
+    } else if (!validatePassword(password)) {
+      openSnackbar(INVALID_PASSWORD_TEXT, "error");
     } else {
-      openSnackbar(response.errorText, "error");
+      e.preventDefault();
+      let response = await signIn({ email, password });
+      if (!response.error) {
+        openSnackbar(SUCCESSS_LOGIN_TEXT, "success");
+        navigate("/");
+      } else {
+        openSnackbar(response.errorText, "error");
+      }
     }
   };
 
