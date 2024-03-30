@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signIn } from "../../api/auth/signin/request";
+import { signIn } from "../../api/auth/signin/Request";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
@@ -18,7 +18,7 @@ export const Login = () => {
 
   const { openSnackbar } = useSnackbar();
 
-  const SUCCESSS_LOGIN_TEXT = "Login success";
+  const SUCCESS_LOGIN_TEXT = "Login success";
   const INVALID_EMAIL_TEXT = "Invalid email format!";
   const INVALID_PASSWORD_TEXT = "Invalid password format!";
 
@@ -31,7 +31,7 @@ export const Login = () => {
       e.preventDefault();
       let response = await signIn({ email, password });
       if (!response.error) {
-        openSnackbar(SUCCESSS_LOGIN_TEXT, "success");
+        openSnackbar(SUCCESS_LOGIN_TEXT, "success");
         navigate("/");
       } else {
         openSnackbar(response.errorText, "error");

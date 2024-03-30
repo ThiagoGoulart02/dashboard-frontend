@@ -1,10 +1,9 @@
 import { signUpRoute } from "./IndexSignUp";
 
+const INTERNAL_ERROR = "Internal error. Try in a few seconds!";
+
 export const signUp = async(payload) => {
     try {
-        console.log(payload.email);
-        console.log(payload.password);
-        console.log(payload.company_name);
         let response = await signUpRoute.post("",{
             email: payload.email,
             password: payload.password,
@@ -12,6 +11,10 @@ export const signUp = async(payload) => {
         });
         return {...response.data, error: false}
     } catch (error) {
-        return {errorText: error.response.data.message, error: true}
+        if (!error.response) {
+            return { errorText: INTERNAL_ERROR, error: true };
+        } else {
+            return {errorText: error.response.data.message, error: true}
+        }
     }
 }

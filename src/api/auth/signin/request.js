@@ -13,8 +13,6 @@ export const signIn = async (payload) => {
         if (!error.response) {
             return { errorText: INTERNAL_ERROR, error: true };
         } else {
-            console.log(error.response.status);
-            console.log(error.response.data.message);
             return { errorText: error.response.data.message, error: true };
         }
     }
