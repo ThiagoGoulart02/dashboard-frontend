@@ -42,6 +42,15 @@
   height: 10%;
   border-radius: 20px;
   background-color: var(--input);
+  padding-right: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.passwordInput i {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .passwordConfirmationInput {

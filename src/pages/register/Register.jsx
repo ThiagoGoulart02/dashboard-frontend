@@ -53,6 +53,19 @@ export const Register = () => {
     }
   };
 
+  const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
+  const [type, setType] = useState("password");
+
+  const handleChangeIcon = () => {
+    if (icon === "bx bx-show bx-tada-hover") {
+      setIcon("bx bx-hide bx-tada-hover");
+      setType("");
+    } else {
+      setIcon("bx bx-show bx-tada-hover");
+      setType("password");
+    }
+  };
+
   return (
     <Container type="center">
       <div className={styles.content}>
@@ -77,9 +90,10 @@ export const Register = () => {
           <div className={styles.passwordInput}>
             <Input
               placeholder={PASSWORD_TEXT}
-              type={"password"}
+              type={type}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <i className={icon} onClick={handleChangeIcon} />
           </div>
           <div className={styles.passwordConfirmationInput}>
             <Input
