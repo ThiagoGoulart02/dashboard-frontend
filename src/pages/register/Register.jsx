@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../api/auth/signup/Request";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
 import { Layout } from "../../components/layout/Layout";
+import { useSnackbar } from "../../components/snackbar/SnackBarContext";
+import { validateEmail } from "../../validators/EmailValidator";
+import { validatePassword } from "../../validators/PasswordValidator";
 import styles from "./Register.module.css";
 
 export const Register = () => {
@@ -13,15 +16,53 @@ export const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [company_name, setCompany_name] = useState("");
 
+  const { openSnackbar } = useSnackbar();
+
+  const navigate = useNavigate();
+
   const COMPANY_NAME = "Enter with your company name";
   const EMAIL_TEXT = "Enter with your email";
   const PASSWORD_TEXT = "Enter with your password";
   const PASSWORD_2_TEXT = "Plase confirm your password";
 
+  const REGISTER_LOGIN_TEXT = "Register success";
+  const INVALID_EMAIL_TEXT = "Invalid email format!";
+  const INVALID_PASSWORD_TEXT = "Invalid password format!";
+  const INVALID_CONFIRMATION_PASSWORD_TEXT = "Invalid confirmation password!";
+
   const handelSubmit = async (e) => {
-    e.preventDefault();
-    if (password == confirmPassword) {
-      let response = await signUp({ email, password, company_name });
+    switch (true) {
+      case !validateEmail(email):
+        openSnackbar(INVALID_EMAIL_TEXT, "error");
+        break;
+      case !validatePassword(password):
+        openSnackbar(INVALID_PASSWORD_TEXT, "error");
+        break;
+      case password !== confirmPassword:
+        openSnackbar(INVALID_CONFIRMATION_PASSWORD_TEXT, "error");
+        break;
+      default:
+        e.preventDefault();
+        let response = await signUp({ email, password, company_name });
+        if (!response.error) {
+          openSnackbar(REGISTER_LOGIN_TEXT, "success");
+          navigate("/");
+        } else {
+          openSnackbar(response.errorText, "error");
+        }
+    }
+  };
+
+  const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
+  const [type, setType] = useState("password");
+
+  const handleChangeIcon = () => {
+    if (icon === "bx bx-show bx-tada-hover") {
+      setIcon("bx bx-hide bx-tada-hover");
+      setType("");
+    } else {
+      setIcon("bx bx-show bx-tada-hover");
+      setType("password");
     }
   };
 
@@ -49,9 +90,10 @@ export const Register = () => {
           <div className={styles.passwordInput}>
             <Input
               placeholder={PASSWORD_TEXT}
-              type={"password"}
+              type={type}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <i className={icon} onClick={handleChangeIcon} />
           </div>
           <div className={styles.passwordConfirmationInput}>
             <Input

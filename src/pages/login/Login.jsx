@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signIn } from "../../api/auth/signin/request";
+import { signIn } from "../../api/auth/signin/Request";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
 import { Layout } from "../../components/layout/Layout";
-import { SnackBar } from "../../components/snackbar/SnackBar";
+import { useSnackbar } from "../../components/snackbar/SnackBarContext";
+import { validateEmail } from "../../validators/EmailValidator";
+import { validatePassword } from "../../validators/PasswordValidator";
 import styles from "./Login.module.css";
 
 export const Login = () => {
@@ -14,27 +16,31 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const [snackBarMessage, setSnackBarMessage] = useState("");
-  const [severity, setSeverity] = useState("");
+  const { openSnackbar } = useSnackbar();
+
+  const SUCCESS_LOGIN_TEXT = "Login success";
+  const INVALID_EMAIL_TEXT = "Invalid email format!";
+  const INVALID_PASSWORD_TEXT = "Invalid password format!";
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let response = await signIn({ email, password });
-    if (!response.error) {
-      setSnackBarMessage("Successful login");
-      setSeverity("success");
-      handleSnackbarOpen();
-      navigate("/");
+    if (!validateEmail(email)) {
+      openSnackbar(INVALID_EMAIL_TEXT, "error");
+    } else if (!validatePassword(password)) {
+      openSnackbar(INVALID_PASSWORD_TEXT, "error");
     } else {
-      setSnackBarMessage(response.errorText);
-      setSeverity("error");
-      handleSnackbarOpen();
+      e.preventDefault();
+      let response = await signIn({ email, password });
+      if (!response.error) {
+        openSnackbar(SUCCESS_LOGIN_TEXT, "success");
+        navigate("/");
+      } else {
+        openSnackbar(response.errorText, "error");
+      }
     }
   };
 
   const [icon, setIcon] = useState("bx bx-show bx-tada-hover");
   const [type, setType] = useState("password");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const EMAIL_TEXT = "Enter with your email";
   const PASSWORD_TEXT = "Enter with your password";
@@ -48,17 +54,6 @@ export const Login = () => {
       setIcon("bx bx-show bx-tada-hover");
       setType("password");
     }
-  };
-
-  const handleSnackbarOpen = () => {
-    setOpenSnackbar(true);
-  };
-
-  const handleSnackbarClose = (reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpenSnackbar(false);
   };
 
   return (
@@ -101,12 +96,6 @@ export const Login = () => {
           </div>
         </Layout>
       </div>
-      <SnackBar
-        open={openSnackbar}
-        handleClose={handleSnackbarClose}
-        text={snackBarMessage}
-        severity={severity}
-      />
     </Container>
   );
 };

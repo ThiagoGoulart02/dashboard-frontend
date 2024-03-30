@@ -51,7 +51,7 @@ const Sidebar = () => {
               </a>
             </li>
             <li className={styles.item}>
-              <a href="/">
+              <a href="/login">
                 <i className={"fas bx bx-export bx-tada-hover"} />
                 <span className={styles.navItem}>Logout</span>
               </a>
