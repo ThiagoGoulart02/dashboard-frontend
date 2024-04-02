@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signUp } from "../../api/auth/signup/Request";
+import { signUp } from "../../api/auth/signup/RequestSignUp";
 import { Button } from "../../components/button/Button";
 import { Container } from "../../components/container/Container";
 import { Input } from "../../components/input/Input";
