@@ -1,0 +1,106 @@
+@import "../../vars.css";
+
+.content {
+  width: 40%;
+  height: 60%;
+  background-color: var(--background-second);
+  border-radius: 30px;
+  border: 2px solid white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title h1 {
+  letter-spacing: 2.7px;
+}
+
+.emailInput {
+  width: 90%;
+  height: 10%;
+  border-radius: 20px;
+  background-color: var(--input);
+}
+
+.passwordInput {
+  width: 90%;
+  height: 10%;
+  background-color: var(--input);
+  border-radius: 20px;
+  padding-right: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.passwordInput i {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.buttons {
+  width: 100%;
+  height: 8%;
+  justify-content: center;
+  display: flex;
+  gap: 50px;
+}
+
+.buttonSignIn {
+  width: 30%;
+  height: 100%;
+  background-color: var(--button);
+  border-radius: 30px;
+}
+
+.buttonSignUp {
+  width: 30%;
+  height: 100%;
+  background-color: var(--button);
+  border-radius: 30px;
+}
+
+.forgotPassword {
+  color: var(--text);
+  font-size: 20px;
+  font-family: var(--font-roboto);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.forgotPassword:hover {
+  color: var(--forgot-password);
+}
+
+@media screen and (max-width: 830px) {
+  .content {
+    width: 70%;
+    height: 60%;
+  }
+
+  .title {
+    font-size: 95%;
+  }
+
+  .buttons {
+    gap: 20px;
+  }
+
+  .buttonSignIn,
+  .buttonSignUp {
+    width: 40%;
+  }
+
+  .forgotPassword {
+    font-size: 100%;
+  }
+}
